@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from IA_documentacao.scrapper import get_all_text_from_url 
+from scrapper import get_all_text_from_url 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain.tools import tool
