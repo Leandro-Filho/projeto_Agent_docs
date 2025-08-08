@@ -13,7 +13,7 @@ from langchain.agents import AgentExecutor, create_openai_tools_agent
 
 def get_reponse_from_openai(message):
 
-    llm = ChatOpenAI(model_name="gpt-3.5-tubro")
+    llm = ChatOpenAI(model_name="gpt-4o-mini")
 
     response = llm.invoke(message)
 
@@ -55,7 +55,7 @@ def black_formatter(path: str) -> str:
 toolkit = [documentacion_tool, black_formatter]
 
 #criamos mais uma llm e colocamos temperatuara igual 0 para que não haja criatividade por parte das respostas, respotas mais concretas
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 
 prompts = ChatPromptTemplate.from_messages(
     [
@@ -76,6 +76,6 @@ agent = create_openai_tools_agent(llm, toolkit, prompts)
 
 agent_executor = AgentExecutor(agent=agent, tools=toolkit, verbose=True)
 
-result = agent_executor.invoke({"input": "Olá!"})
+result = agent_executor.invoke({"input": "eu queria saber quais são os modelos de commit existentes e seus significados:https://www.tabnews.com.br/guscsales/uma-maneira-de-organizar-suas-branches-commits-e-pull-requests"})
 
 print(result["output"])
